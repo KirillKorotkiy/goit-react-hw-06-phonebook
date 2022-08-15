@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux/es/exports';
 
 const ContactsForm = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const contacts = useSelector(state => state.contacts.items);
   const dispatch = useDispatch();
@@ -16,6 +16,7 @@ const ContactsForm = () => {
       alert(`${data.name} is already exist`);
     } else {
       dispatch(addContanct(data));
+      reset()
     }
   };
 
